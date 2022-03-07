@@ -88,7 +88,7 @@ body {
 }
 
 .output-form {
-  display: flex;
+  flex-wrap: nowrap;
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
@@ -105,24 +105,11 @@ body {
   width: 50%;
 }
 
-.out-num{
-  width: 30%;
-  font-weight: 900;
-
+.menu-task{
+  align-self: center;
+  margin-right: 20px;
 }
-
-.delete-form{
-  margin-left: auto;
-}
-#delete{
-  visibility: hidden;
-}
-.taskNumber{
-  min-width: 50px;
-  min-height: 40px;
-  visibility: hidden;
-}
-
-#tasks{
-  width: 100%;
+.basket{
+  height: 24px;
+  cursor: pointer;
 }
