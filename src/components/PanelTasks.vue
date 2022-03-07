@@ -3,7 +3,7 @@
         <p class="out-text">{{task.task}}</p>
         <p class="out-text">{{task.desc}}</p>
 <div class="menu-task">
-<img :src="image" class="basket" alt="delete">
+<img :src="image" class="basket"  alt="delete" @click="DeleteTask"> 
 </div>
   </div>
 </template>
@@ -17,7 +17,13 @@ export default {
     return {
       image
     };
-  } 
+  },
+    methods: {
+    DeleteTask(e) {
+        const box = e.target.closest('#tasks');
+        box.remove();
+    },
+  },
 };
 </script>
 
