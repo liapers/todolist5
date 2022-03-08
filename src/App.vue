@@ -6,11 +6,20 @@
     <div id="output" class="output-forms flex">
       <p class="title">Список задач</p>
       <div class="delete-form">
-        <button id="delete" class="item-form btn-form" v-on:click="removeTasks()">
+        <button
+          id="delete"
+          class="item-form btn-form"
+          v-on:click="removeTasks()"
+        >
           Удалить все задачи
         </button>
       </div>
-      <PanelTasks v-for="(task, index) in tasks" :key="index" :task="task" />
+      <PanelTasks
+        v-for="(task, index) in tasks"
+        :key="`${index}_${task.task}`"
+        :task="task"
+        :index="index"
+      />
     </div>
   </div>
 </template>
@@ -24,6 +33,7 @@ export default {
   data() {
     return {
       tasks: [],
+      // doneTasks: []
     };
   },
   components: {
@@ -34,9 +44,14 @@ export default {
     saveNewTask(data) {
       this.tasks.push(data);
     },
-  removeTasks(){
-    this.tasks=[]
-  }
+    removeTasks() {
+      this.tasks = [];
+    },
+    // doneTask(data){
+    //   if(data.check){
+    //     this.tasks[data.index]
+    //   }
+    // }
   },
 };
 </script>
