@@ -3,7 +3,7 @@
     <p class="out-text">{{ task.task }}</p>
     <p class="out-text">{{ task.desc }}</p>
     <div class="menu-task flex">
-      <img :src="image" class="basket" alt="delete" @click="DeleteTask" />
+      <img :src="image" class="basket" alt="delete" @click="DeleteTask(index)" />
       <input
         type="checkbox"
         class="checkbox"
@@ -29,8 +29,8 @@ export default {
     };
   },
   methods: {
-    DeleteTask(e) {
-      const box = e.target.closest("#tasks");
+    DeleteTask(index) {
+      const box = document.querySelector(`#tasks_${index}`)
       box.remove();
     },
     DoneTask(index) {
