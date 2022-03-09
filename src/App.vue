@@ -6,6 +6,13 @@
     <div id="output" class="output-forms flex">
       <p class="title">Список задач</p>
       <div class="delete-form">
+        <input
+          v-model="search"
+          type="text"
+          id="search"
+          class="search"
+          placeholder="Поиск по имени задачи"
+        />
         <button
           id="delete"
           class="item-form btn-form"
@@ -15,7 +22,7 @@
         </button>
       </div>
       <PanelTasks
-        v-for="(task, index) in tasks"
+        v-for="(task, index) in todosByTitle"
         :key="`${index}_${task.task}`"
         :task="task"
         :index="index"
@@ -33,25 +40,35 @@ export default {
   data() {
     return {
       tasks: [],
-      // doneTasks: []
+      search: "",
+      todos: [],
+      isLoaded: false,
     };
   },
   components: {
     GetTasks,
     PanelTasks,
   },
+  computed: {
+    todosByTitle() {
+      let obj = this.tasks;
+      let newArray = [];
+      const serach = this.search.toLowerCase();
+      obj.forEach(function (obj) {
+       let el = obj;
+        if (el.task.toLowerCase().indexOf(serach) != -1) newArray.push(el);
+      });
+      return newArray;
+    },
+  },
   methods: {
     saveNewTask(data) {
       this.tasks.push(data);
+      this.isLoaded = true;
     },
     removeTasks() {
       this.tasks = [];
     },
-    // doneTask(data){
-    //   if(data.check){
-    //     this.tasks[data.index]
-    //   }
-    // }
   },
 };
 </script>

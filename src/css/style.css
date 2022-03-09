@@ -119,6 +119,9 @@ body {
 .delete-form{
   margin-left: auto;
 }
+.search{
+  margin-right: 30px;
+} 
 
 .checkbox{
   transform:scale(1.3);
@@ -126,9 +129,10 @@ body {
 }
 
 .done{
-
   margin-top: 10px;
   order: 1;
   opacity: 0.5
 }
+
+
 
